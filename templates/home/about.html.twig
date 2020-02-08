@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!-- LOADER -->
+    <div id="preloader">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div><!-- end loader -->
+    <!-- END LOADER -->
+
+    {% include 'partials/menu.html.twig' %}
+
+    <div class="all-title-box all-title-box2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>À propos</h2>
+                    <!-- Breadcrumbs -->
+                    <nav id="breadcrumbs">
+                        <ul>
+                            <li><a href="{{ path('home') }}">Accueil</a></li>
+                            <li>À propos</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-box">
+        <div class="container">
+
+            <h1>À propos de nous</h1>
+                <p>
+                    En tant que le plus grand groupe de concessionnaires automobile au Québec, le Groupe Gabriel reçoit chaque année des centaines de véhicules d’occasion en échange venant de clients satisfaits. Nous croyons que l’achat d’un véhicule, qu’il soit neuf ou d’occasion, est une étape importante et qu’il est fondamental que le client trouve ce qu’il désire vraiment.
+                </p>
+            <p>
+                Fondé en 1986 par l’ouverture d’un concessionnaire Acura, le Groupe s’est développé sous des valeurs de solidarité, de coopération et d’unité. Ces valeurs ont conquis le cœur des gens qui ont fait du Groupe Gabriel une entreprise prospère et digne de confiance.
+            </p>
+            <hr class="hr1">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="post-media wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                        <img src="uploads/about_bg.jpg" alt="" class="img-responsive">
+                    </div>
+                    <!-- une voiture par hazard et ses descriptions -->
+                </div>
+                <div class="col-md-6">
+                    <div class="message-box right-ab">
+                        <h4>Awards Winning Real Estate Company</h4>
+                        <h2>Welcome to CITY Real Estate</h2>
+                        <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
+                        <p>Aenean eleifend in felis id viverra. Vestibulum semper ex eu molestie pulvinar. Maecenas non efficitur metus, et semper sem. Mauris ligula sapien, gravida a scelerisque ut, vehicula sed mauris. Proin dapibus mi id vulputate euismod. Nam ullamcorper dui tellus, non lacinia lorem hendrerit eu. Donec at orci cursus, rutrum metus eget, cursus turpis.  </p>
+                        <a href="#" class="btn btn-light btn-radius grd1 btn-brd"> En savoir plus </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- end section -->
+
+    {% include 'partials/footer.html.twig' %}
+{% endblock %}

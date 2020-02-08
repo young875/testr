@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!-- LOADER -->
+    <div id="preloader">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div><!-- end loader -->
+    <!-- END LOADER -->
+
+    {% include 'partials/menu.html.twig' %}
+
+    <div class="all-title-box all-title-box1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Contact</h2>
+                    <!-- Breadcrumbs -->
+                    <nav id="breadcrumbs">
+                        <ul>
+                            <li><a href="{{ path('home') }}">Accueil</a></li>
+                            <li>Contact</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="support" class="section wb">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>CONTACTEZ-NOUS</h3>
+                <p class="lead">
+                    N'hésitez pas à nous contacter pour toute question ou tout renseignement dont vous pourriez avoir besoin, à propos de nos véhicules neufs ou occasion ou de l'un des nombreux services additionnels que nous proposons. Nous nous engageons à vous répondre sous vingt-quatre heures du lundi au vendredi pendant les horaires d'ouverture des concessions.
+                </p>
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="contact_form">
+                        {{ form_start(form) }}
+                            <fieldset class="row-fluid">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    {{ form_widget(form.titre) }}
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    {{ form_widget(form.prenom) }}
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    {{ form_widget(form.nom) }}
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    {{ form_widget(form.telephone) }}
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    {{ form_widget(form.mail) }}
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    {{ form_widget(form.demande) }}
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    {{ form_widget(form.message) }}
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                    <button type="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Envoyer ma demande</button>
+                                </div>
+                                <div class="col-md-12"><strong style="color: red">* CHAMPS OBLIGATOIRES</strong></div>
+                            </fieldset>
+                        {{ form_end(form) }}
+                    </div>
+                </div><!-- end col -->
+                <div class="col-md-4">
+                    <div class="right-box-contact">
+                        <h4>Téléphone</h4>
+                        <div class="support-info">
+                            <div class="info-title">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                + 11 2839 9988
+                                <span>Booking Time: 0900 – 2000 Hrs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-box-contact">
+                        <h4>Adresse</h4>
+                        <div class="support-info">
+                            <div class="info-title">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Address
+                                <span>PO Box 16122 Collins Street West Victoria 8007 Australia</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-box-contact">
+                        <h4>Contact Info</h4>
+                        <div class="support-info">
+                            <div class="info-title">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                info@yoursite.com
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    <div id="map"></div>
+
+
+
+    {% include 'partials/footer.html.twig' %}
+{% endblock %}

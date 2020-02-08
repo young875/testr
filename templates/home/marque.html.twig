@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!-- LOADER -->
+    <div id="preloader">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div><!-- end loader -->
+    <!-- END LOADER -->
+
+    {% include 'partials/menu.html.twig' %}
+
+    <div class="all-title-box all-title-box4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Nos {{ marque.marque }}</h2>
+                    <!-- Breadcrumbs -->
+                    <nav id="breadcrumbs">
+                        <ul>
+                            <li><a href={{ path('home') }}>Accueil</a></li>
+                            <li>Nos {{ marque.marque }}</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="features" class="section wb">
+        <div class="container">
+
+            <hr class="invis">
+
+            <div class="row">
+                {% for car in cars %}
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="service-widget">
+                            <div class="property-main">
+                                <div class="property-wrap">
+                                    <figure class="post-media wow fadeIn">
+                                        <a href="{{ vich_uploader_asset(car.images.first, 'imageFile') }}" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                                        <img src="{{ vich_uploader_asset(car.images.first, 'imageFile') }}" alt="{{ car.slug }}" class="img-responsive">
+                                        <div class="label-inner">
+                                            <span class="label-status label">{{ car.etats.etat }}</span>
+                                        </div>
+                                        <div class="price">
+                                            <span class="item-sub-price">{{ car.prix |number_format(0, ' ', '.') }} <sup>€</sup></span>
+                                        </div>
+                                    </figure>
+                                    <div class="item-body">
+                                        <h3><a href="{{ path('page_car', {'slug': car.slug}) }}"><strong style="color: #fe980f">{{ car.model }} {{ car.version }}</strong></a></h3>
+                                        <div class="info">
+                                            <p><strong><span>Portes: {{ car.porte }}</span> <span>Puissance: {{ car.puissance }}</span></strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-foot">
+                                    <a href="{{ path('page_car', {'slug': car.slug}) }}" class="btn btn-light btn-radius grd1"> <i class="fa fa-search-plus"></i> Plus d'information </a>
+                                </div>
+                            </div>
+                        </div><!-- end service -->
+                    </div>
+                {% endfor %}
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+    <div class="text-center">
+        {{ knp_pagination_render(cars) }}
+    </div>
+    {% include 'partials/footer.html.twig' %}
+{% endblock %}

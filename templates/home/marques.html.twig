@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!-- LOADER -->
+    <div id="preloader">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div><!-- end loader -->
+    <!-- END LOADER -->
+
+    {% include 'partials/menu.html.twig' %}
+
+    <div class="all-title-box all-title-box3" style="background-image: url(/img/bg3{{ random('123') }}.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Nos marques</h2>
+                    <!-- Breadcrumbs -->
+                    <nav id="breadcrumbs">
+                        <ul>
+                            <li><a href="{{ path('home') }}">Accueil</a></li>
+                            <li>Nos marques</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gallery" class="section wb">
+        <div class="container">
+            <div class="section-title row text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>Nos Marques</h3>
+                    <p class="lead">
+                        Historiquement, D’Ieteren Auto a pour objectif de répondre au mieux aux besoins de mobilité des citoyens belges. Aujourd’hui, plus que jamais, D’Ieteren offre la plus large gamme de véhicules et de modèles. De la citadine à la compacte, en passant par l’hybride ou la familiale, D’Ieteren Auto propose toujours un véhicule qui correspond à vos envies du moment.
+                    </p>
+                </div><!-- end col -->
+            </div><!-- end title -->
+
+            <div id="da-thumbs" class="da-thumbs portfolio">
+                {% for marque in marques %}
+                    <div class="post-media_g pitem item-w1 item-h1 cat1 text-center">
+                        <a href="{{ vich_uploader_asset(marque, 'imageFile') }}" data-rel="prettyPhoto[gal]">
+                            <img src="{{ vich_uploader_asset(marque, 'imageFile') }}" alt="{{ marque.slug }}" class="img-responsive">
+                            <div>
+                                <i class="flaticon-unlink"></i>
+                            </div>
+
+                        </a>
+                        <p style="margin-top: 5px">
+                            <a href="{{ path('marque_show', {'slug': marque.slug}) }}" class="btn btn-light btn-radius grd1"> Voir nos ( {{ marque.cars.count }} ) {{ marque.marque }} </a>
+                        </p>
+                    </div>
+                {% endfor %}
+            </div><!-- end portfolio -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+
+    <!-- end section -->
+
+    {% include 'partials/footer.html.twig' %}
+{% endblock %}

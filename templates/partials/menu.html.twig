@@ -1,0 +1,24 @@
+<header class="header header_style_01">
+    <nav class="megamenu navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('home') }}"><img src="/images/logos/logo.png" alt="image"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a  {% if page == 'home' %} class="active" {% endif %}   href="{{ path('home') }}">Accueil</a></li>
+                    <li><a {% if page == 'vehicules' %} class="active" {% endif %}  href="{{ path('vehicules') }}">Véhicules  </a></li>
+                    <li><a {% if page == 'marques' %} class="active" {% endif %}  href="{{ path('marques') }}">Marques</a></li>
+                    <li><a {% if page == 'about' %} class="active" {% endif %}  href="{{ path('about') }}">À propos</a></li>
+                    <li><a {% if page == 'contact' %} class="active" {% endif %} href="{{ path('contact') }}">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

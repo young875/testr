@@ -1,0 +1,157 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="/sh.css">
+    <link rel="stylesheet" href="/dist/css/lightbox.min.css">
+{% endblock %}
+
+{% block body %}
+
+    <!-- LOADER -->
+    <div id="preloader">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div><!-- end loader -->
+    <!-- END LOADER -->
+
+    {% include 'partials/menu.html.twig' %}
+
+    <div class="all-title-box all-title-box4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{ cars.model }}</h2>
+                    <!-- Breadcrumbs -->
+                    <nav id="breadcrumbs">
+                        <ul>
+                            <li><a href="{{ path('home') }}">Accueil</a></li>
+                            <li>{{ cars.marques.marque }}</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="">
+        <div class="row">
+            <div class="col-lg-offset-1 col-sm-offset-1 col-sm-10 padding-right">
+                <div class="product-details">
+                    <div class="col-sm-6">
+                        <div class="view-product">
+                            <a href="{{ vich_uploader_asset(cars.images.first, 'imageFile') }}" data-lightbox="example-set">
+                            <img src="{{ vich_uploader_asset(cars.images.first, 'imageFile') }}" alt="{{ cars.slug }}">
+                            </a>
+
+                            <h3><a href="{{ vich_uploader_asset(cars.images.first, 'imageFile') }}" data-lightbox="example-set" style="color: white">ZOOM</a></h3>
+                        </div>
+                        <div id="similar-product" class="carousel slide" data-ride="carousel">
+                            <div class="testi-carousel owl-carousel owl-theme">
+                                {% for image in cars.images %}
+                                    <div class="card clearfix text-center">
+                                        <a href="{{ vich_uploader_asset(image, 'imageFile') }}" data-lightbox="example-set">
+                                            <img class="card-img-top img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') }}" alt=" {{ cars.slug }}">
+                                        </a>
+                                    </div>
+                                    <!-- end car -->
+                                {% endfor %}
+                            </div><!-- end carousel -->
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6" style="line-height: 25px">
+                        <div class="product-information"><!--/product-information-->
+                            <h2><strong>{{ cars.model }} {{ cars.model }}</strong></h2>
+                            <p>Ref.: {{ ref }}</p>
+                            <span>
+									<span>{{ cars.prix | number_format(0, ' ', ' ') }}<sup>€</sup></span>
+									<a href="#red"><button type="button" class="btn btn-default cart">
+										<i class="fa fa-calendar"></i>
+										Réserver maintenant
+									</button></a>
+								</span>
+                            <p><b>Status:</b> Disponible</p>
+                            <p><b>Condition:</b> VÉHICULE {{ cars.etats.etat }}</p>
+                            <p><b>ENERGIE:</b> {{ cars.carburations.carburation }} &nbsp; | &nbsp; <b>ANNEE:</b> {{ cars.annee }}</p>
+                            <p><b>CHEVAUX FISCAUX:</b> {{ cars.chevaux }} CV &nbsp; | &nbsp; <b>KM:</b> {{ cars.kilometre }}</p>
+                            <p><b>NB. PORTES:</b> {{ cars.porte }} &nbsp; | &nbsp; <b>PUISSANCE:</b> {{ cars.puissance }} CV</p>
+                            <p><b>TYPE DE BOITE:</b> {{ cars.boites.boite }} &nbsp; | &nbsp; <b>CO2:</b> {{ cars.co2 }} g/km
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div><div class="category-tab shop-details-tab"><!--category-tab-->
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#reserver" data-toggle="tab">Réserver</a></li>
+                            {% if  cars.description %}
+                            <li class=""><a href="#details" data-toggle="tab">Autre détails</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="tab-content" id="red">
+                        <div class="tab-pane fade active in" id="reserver">
+                            <div class="col-sm-12">
+                                <p>Les informations que vous complétez en remplissant ce formulaire sont utilisées pour répondre à votre demande et pendant toute la relation commerciale.</p>
+                                <p><b style="color: red">CHAMPS OBLIGATOIRES</b></p>
+
+
+                                {{ form_start(form) }}
+                                <fieldset class="row-fluid">
+                                <div class="form-group col-md-4">
+                                    {{ form_widget(form.titre) }}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{ form_widget(form.prenom) }}
+                                </div>
+                                <div class="form-group col-md-12">
+                                    {{ form_widget(form.nom) }}
+                                </div>
+                                <div class="form-group col-md-6">
+                                    {{ form_widget(form.mail) }}
+                                </div>
+                                <div class="form-group col-md-6">
+                                    {{ form_widget(form.telephone) }}
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    {{ form_widget(form.demande) }}
+                                </div>
+                                <div class="form-group col-md-12">
+                                    {{ form_widget(form.message) }}
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button class="btn btn-primary pull-right" style="width: 250px; height: 50px; font-weight: bold" type="submit">Envoyer ma demande</button>
+                                </div>
+                                </fieldset>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                        {% if cars.description %}
+                        <div class="tab-pane " id="details">
+                            <div class="col-sm-12">
+                                <div class="product-image-wrapper">
+                                    {{ cars.description |raw |nl2br }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% include 'partials/footer.html.twig' %}
+
+    {% block javascripts %}
+        <script src="/dist/js/lightbox.min.js"></script>
+    {% endblock %}
+{% endblock %}
